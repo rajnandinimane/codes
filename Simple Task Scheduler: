@@ -1,0 +1,32 @@
+#include <iostream> 
+using namespace std; 
+class Node 
+{ 
+public : 
+string task_name; 
+int priority; 
+int exe_time; 
+Node *next; 
+Node(string t, int p, int e) 
+{ 
+task_name = t; 
+priority = p; 
+exe_time = e; 
+next = NULL; 
+} 
+void display() 
+{ 
+cout << "Task Name: " << task_name << ", Priority: " << priority << ", Execution Time: " 
+<< exe_time << endl; 
+} 
+}; 
+int main() 
+{ 
+Node *header = new Node("t1",10,15); 
+Node *temp = new Node("t2",11,5); 
+header -> next = temp; 
+// temp->display(); 
+header->display(); 
+header->next->display(); 
+return 0; 
+}
