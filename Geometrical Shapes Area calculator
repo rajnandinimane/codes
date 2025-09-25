@@ -1,0 +1,78 @@
+#include <iostream> 
+using namespace std; 
+const int INF = 9999; 
+const int V = 4;       
+void shortest_distance(int matrix[V][V]) 
+{ 
+//Replace -1 with a large INF and set diagonal to 0 
+for (int i = 0; i < V; i++) 
+{ 
+for (int j = 0; j < V; j++) 
+{ 
+if (matrix[i][j] == -1)     
+{ 
+} 
+matrix[i][j] = INF; 
+if (i == j)     
+//Replace -1 with INF 
+//Set Diagonal to 0 
+{ 
+} 
+} 
+} 
+matrix[i][j] = 0; 
+//Floyd-Warshall algorithm 
+for (int k = 0; k < V; k++) 
+{ 
+for (int i = 0; i < V; i++) 
+{ 
+for (int j = 0; j < V; j++) 
+{ 
+if (matrix[i][k] != INF && matrix[k][j] != INF && 
+matrix[i][k] + matrix[k][j] < matrix[i][j]) 
+                { 
+                    matrix[i][j] = matrix[i][k] + matrix[k][j]; 
+                } 
+            } 
+        } 
+    } 
+ 
+    // Replace the INF back with -1 
+    for (int i = 0; i < V; i++) 
+    { 
+        for (int j = 0; j < V; j++) 
+        { 
+            if (matrix[i][j] == INF) 
+            { 
+                matrix[i][j] = -1; 
+            } 
+        } 
+    } 
+} 
+ 
+int main() 
+{   
+    int matrix[V][V]; 
+    cout << "Enter the matrix (" << V << "x" << V << "):" << endl;     
+    for(int i=0; i<V; i++) 
+    { 
+        for(int j=0; j<V; j++) 
+        { 
+            cin >> matrix[i][j]; 
+        } 
+    } 
+    shortest_distance(matrix); 
+ 
+    // Print the final matrix 
+    cout << "Shortest Distance Matrix: " << endl; 
+    for (int i = 0; i < V; i++) 
+    { 
+        for (int j = 0; j < V; j++) 
+        { 
+            cout << matrix[i][j] << " "; 
+        } 
+        cout << endl; 
+    } 
+    return 0; 
+} 
+
