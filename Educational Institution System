@@ -1,0 +1,99 @@
+#include < >
+using namespace std;
+
+// Base class staff
+class staff {
+protected:
+    string name, depart; iostream
+    int id;
+
+public:
+    void accept1() {
+        cout << "Enter your name: ";
+        cin >> name;
+        cout << "Enter your ID: ";
+        cin >> id;
+        cout << "Enter your department: ";
+        cin >> depart;
+    }
+
+    void display1() {
+        cout << "\n--- Staff Details ---\n";
+        cout << "Name: " << name << endl;
+        cout << "Employee ID: " << id << endl;
+        cout << "Department: " << depart << endl;
+    }
+};
+
+// Derived class teacher
+class teacher : public staff {
+    string role, section;
+
+public:
+    void accept2() {
+        accept1();
+        cout << "Enter your role: ";
+        cin >> role;
+        cout << "Enter section: ";
+        cin >> section;
+    }
+
+    void display2() {
+        display1();
+        cout << "Role: " << role << endl;
+        cout << "Section: " << section << endl;
+    }
+};
+
+// Derived class supportingStaff
+class supportingStaff : public staff {
+    string area;
+
+public:
+    void accept3() {
+        accept1();
+        cout << "Enter area of support: ";
+        cin >> area;
+    }
+
+    void display3() {
+        display1();
+        cout << "Area of support: " << area << endl;
+    }
+};
+
+int main() {
+    int n, a;
+
+    // Teachers
+    cout << "Enter number of teachers: ";
+    cin >> n;
+    teacher obj[n];
+    for (int i = 0; i < n; i++) {
+        cout << "\nEnter details for Teacher " << i + 1 << ":\n";
+        obj[i].accept2();
+    }
+    for (int i = 0; i < n; i++) {
+        cout << "\nDetails of Teacher " << i + 1 << ":\n";
+        obj[i].display2();
+    }
+
+    cout << "----------------------------------\n";
+
+    // Supporting Staff
+    cout << "Enter number of supporting staff: ";
+    cin >> a;
+    supportingStaff obj2[a];
+    for (int i = 0; i < a; i++) {
+        cout << "\nEnter details for Supporting Staff " << i + 1 << ":\n";
+        obj2[i].accept3();
+    }
+    for (int i = 0; i < a; i++) {
+        cout << "\nDetails of Supporting Staff " << i + 1 << ":\n";
+        obj2[i].display3();
+    }
+
+    cout << "---------------------------\n";
+    return 0;
+}
+
